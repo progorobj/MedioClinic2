@@ -21,6 +21,8 @@ namespace MedioClinic1
         public IWebHostEnvironment Environment { get; }
         public IConfigurationSection? Options { get; }
 
+        private const string ConventionalRoutingControllers = "Error|ImageUploader|MediaLibraryUploader|FormTest|Account|Profile";
+
         public Startup(IWebHostEnvironment environment, IConfiguration configuration)
         {
             Environment = environment;
@@ -136,11 +138,13 @@ namespace MedioClinic1
             app.UseStaticFiles();
 
             app.UseKentico();
-            app.UseRequestCulture();
+         
 
             app.UseCookiePolicy();
 
             app.UseCors();
+            app.UseRouting();
+            app.UseRequestCulture();
 
             // app.UseAuthentication(); commenté Exercise: Setting up the Medio Clinic website solution
             // app.UseAuthorization();
@@ -148,8 +152,18 @@ namespace MedioClinic1
             app.UseEndpoints(endpoints =>
             {
                 endpoints.Kentico().MapRoutes();
+                endpoints.MapControllerRoute(
+                    name: "error",
+                    pattern: "{culture}/error/{code}",
+                    defaults: new { controller = "Error", action = "Index" },
+                    constraints: new
+                    {
+                        controller = ConventionalRoutingControllers
+                    });
 
-               
+                endpoints.MapDefaultControllerRoute();
+
+
             });
         }
     }
