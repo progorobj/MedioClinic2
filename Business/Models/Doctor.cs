@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Business.Models
 {
+
 	/// <summary>
 	/// Information about a doctor
 	/// </summary>
