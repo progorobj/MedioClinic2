@@ -142,6 +142,7 @@ namespace MedioClinic1
             app.UseKentico();
          
 
+
             app.UseCookiePolicy();
 
             app.UseCors();
