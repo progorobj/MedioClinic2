@@ -50,6 +50,18 @@ namespace XperienceAdapter.Repositories
             return mediaFileInfo != null ? MapDtoProperties(mediaFileInfo) : null;
         }
 
+
+        public async Task<MediaLibraryFile> GetMediaFileAsync(string mediaLibraryName, string path, CancellationToken? cancellationToken = default)
+        {
+            var libraryId = GetLibraryId(mediaLibraryName);
+
+            return (await GetResultAsync(baseQuery =>
+                baseQuery
+                    .WhereEquals("FileLibraryID", libraryId)
+                    .WhereStartsWith("FilePath", path),
+                cancellationToken))
+                .FirstOrDefault();
+        }
         public async Task<Guid> AddMediaFileAsync(IUploadedFile uploadedFile,
                                           int mediaLibraryId,
                                           string? libraryFolderPath = default,

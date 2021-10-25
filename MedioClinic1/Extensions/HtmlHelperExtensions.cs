@@ -1,15 +1,44 @@
 ﻿using CMS.Helpers;
+
+using MedioClinic1.Models;
+
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace MedioClinic1.Extensions
 {
     public static class HtmlHelperExtensions
     {
+
+		public static IHtmlContent MedioClinicInputFor<TModel, TResult>(
+		   this IHtmlHelper<TModel> htmlHelper,
+		   Expression<Func<TModel, TResult>> expression,
+		   string? templateName = default,
+		   string? htmlFieldName = default,
+		   object? additionalViewData = default)
+		{
+			var tagBuilder = new TagBuilder("div");
+			tagBuilder.AddCssClass("row");
+			tagBuilder.AddCssClass("input-field");
+			tagBuilder.InnerHtml.AppendHtml(htmlHelper.EditorFor(expression, templateName, htmlFieldName, additionalViewData));
+			string result;
+
+			using (var writer = new StringWriter())
+			{
+				tagBuilder.WriteTo(writer, HtmlEncoder.Default);
+				result = writer.ToString();
+			}
+
+			return new HtmlString(result);
+		}
 
 		public static IHtmlContent FileInput(this IHtmlHelper htmlHelper,
 									 string buttonResourceKey,

@@ -76,5 +76,13 @@ namespace XperienceAdapter.Repositories
 		/// <param name="fileGuid">File GUID.</param>
 		/// <returns>Media file DTO.</returns>
 		MediaLibraryFile GetMediaFile(Guid fileGuid);
+
+
+		/// <summary>
+		/// Gets media files.
+		/// </summary>
+		/// <param name="path">Path in the library.</param>
+		/// <returns>File DTOs.</returns>
+		Task<MediaLibraryFile> GetMediaFileAsync(string mediaLibraryName, string path, CancellationToken? cancellationToken = default);
 	}
 }

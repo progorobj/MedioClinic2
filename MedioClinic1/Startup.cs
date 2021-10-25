@@ -1,28 +1,42 @@
+using System;
 using Autofac;
 using Core.Configuration;
 using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
+using Kentico.Membership;
 using Kentico.PageBuilder.Web.Mvc;
 using Kentico.Web.Mvc;
 using MedioClinic1.Configuration;
 using MedioClinic1.Extensions;
+using MedioClinic1.PageTemplates;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using XperienceAdapter.Localization;
+using Identity;
+using Identity.Models;
+using CMS.DataEngine;
+using System.Threading.Tasks;
+using CMS.Helpers;
 
 namespace MedioClinic1
 {
     public class Startup
     {
+
+        private const string AuthCookieName = "MedioClinic.Authentication";
         public IWebHostEnvironment Environment { get; }
         public IConfigurationSection? Options { get; }
 
         private const string ConventionalRoutingControllers = "Error|ImageUploader|MediaLibraryUploader|FormTest|Account|Profile";
+
+        public string? DefaultCulture => SettingsKeyInfoProvider.GetValue($"{Options?.GetSection("SiteCodeName")}.CMSDefaultCultureCode");
 
         public Startup(IWebHostEnvironment environment, IConfiguration configuration)
         {
@@ -98,7 +112,10 @@ namespace MedioClinic1
             return factory.Create("SharedResource", assemblyName);
                     };
                 });
-         }
+
+
+            ConfigurePageBuilderFilters();
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
@@ -163,10 +180,143 @@ namespace MedioClinic1
                         controller = ConventionalRoutingControllers
                     });
 
+              endpoints.MapAreaControllerRoute(
+                name: "identity",
+                areaName: "Identity",
+                pattern: "{culture}/identity/{controller}/{action}/{id?}",
+                constraints: new
+                {
+                    controller = ConventionalRoutingControllers
+                });
+
+                
+
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("The site has not been configured yet.");
+                });
 
 
             });
         }
+
+
+
+
+        /// <summary>
+        /// Configures the page template filters.
+        /// </summary>
+        private static void ConfigurePageBuilderFilters() =>
+            PageBuilderFilters.PageTemplates.Add(new EventPageTemplateFilter());
+
+
+
+        /// <summary>
+        /// Configures ASP.NET Identity and Xperience to use 3rd party identity providers.
+        /// </summary>
+        /// <param name="builder">Authentication builder.</param>
+        /// <param name="xperienceOptions">Options.</param>
+        /// 
+        private static void ConfigureExternalAuthentication(AuthenticationBuilder builder, XperienceOptions? xperienceOptions)
+        {
+            var identityOptions = xperienceOptions?.IdentityOptions;
+
+            if (identityOptions?.FacebookOptions?.UseFacebookAuth == true)
+            {
+                var facebookOptions = identityOptions.FacebookOptions;
+
+                builder.AddFacebook(options =>
+                {
+                    options.ClientId = facebookOptions.AppId;
+                    options.ClientSecret = facebookOptions.AppSecret;
+                });
+            };
+
+            if (identityOptions?.GoogleOptions?.UseGoogleAuth == true)
+            {
+                var googleOptions = identityOptions.GoogleOptions;
+
+                builder.AddGoogle(options =>
+                {
+                    options.ClientId = googleOptions.ClientId;
+                    options.ClientSecret = googleOptions.ClientSecret;
+                });
+            };
+
+            if (identityOptions?.MicrosoftOptions?.UseMicrosoftAuth == true)
+            {
+                var microsoftOptions = identityOptions.MicrosoftOptions;
+
+                builder.AddMicrosoftAccount(options =>
+                {
+                    options.ClientId = microsoftOptions.ClientId;
+                    options.ClientSecret = microsoftOptions.ClientSecret;
+                });
+            };
+
+            if (identityOptions?.TwitterOptions?.UseTwitterAuth == true)
+            {
+                var twitterOptions = identityOptions.TwitterOptions;
+
+                builder.AddTwitter(options =>
+                {
+                    options.ConsumerKey = twitterOptions.ConsumerKey;
+                    options.ConsumerSecret = twitterOptions.ConsumerSecret;
+                    options.RetrieveUserDetails = true;
+                });
+            }
+        }
+
+        /// <summary>
+        /// Configures ASP.NET Identity services of Xperience.
+        /// </summary>
+        /// <param name="services">Service collection.</param>
+        /// <param name="xperienceOptions">Options.</param>
+        private void ConfigureIdentityServices(IServiceCollection services, XperienceOptions? xperienceOptions)
+        {
+            services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IPasswordHasher<MedioClinicUser>, Kentico.Membership.PasswordHasher<MedioClinicUser>>();
+
+            services.AddApplicationIdentity<MedioClinicUser, ApplicationRole>()
+                .AddApplicationDefaultTokenProviders()
+                .AddUserStore<ApplicationUserStore<MedioClinicUser>>()
+                .AddRoleStore<ApplicationRoleStore<ApplicationRole>>()
+                .AddUserManager<MedioClinicUserManager>()
+                .AddSignInManager<MedioClinicSignInManager>();
+
+            var authenticationBuilder = services.AddAuthentication();
+            ConfigureExternalAuthentication(authenticationBuilder, xperienceOptions);
+
+            services.AddAuthorization();
+
+            services.ConfigureApplicationCookie(cookieOptions =>
+            {
+                cookieOptions.LoginPath = new PathString("/account/signin");
+
+                cookieOptions.Events.OnRedirectToLogin = redirectContext =>
+                {
+                    var culture = (string)redirectContext.Request.RouteValues["culture"];
+
+                    if (string.IsNullOrEmpty(culture))
+                    {
+                        culture = DefaultCulture;
+                    }
+
+                    var redirectUrl = redirectContext.RedirectUri.Replace("/account/signin", $"/{culture}/account/signin");
+                    redirectContext.Response.Redirect(redirectUrl);
+                    return Task.CompletedTask;
+                };
+
+                cookieOptions.ExpireTimeSpan = TimeSpan.FromDays(14);
+                cookieOptions.SlidingExpiration = true;
+                cookieOptions.Cookie.Name = AuthCookieName;
+            });
+
+            CookieHelper.RegisterCookie(AuthCookieName, CookieLevel.Essential);
+        }
+
+
     }
+
 }

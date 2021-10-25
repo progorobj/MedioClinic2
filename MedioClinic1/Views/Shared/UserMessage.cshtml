@@ -3,6 +3,10 @@
 <main class="row mc-page-fold-right">
     <div class="container mc-section-4">
         <h1>@Html.DisplayFor(m => m.Metadata.Title)</h1>
-        <partial name="~/Views/Shared/_UserMessage.cshtml" for="UserMessage" />
+        <section class="row section">
+            <div class="col xl5 l9 m12 s12">
+                @Html.DisplayFor(m => m.UserMessage)
+            </div>
+        </section>
     </div>
 </main>
