@@ -8,6 +8,7 @@ namespace Core
 {
 	public interface IRepository<TDto>
 	{
+
 		/// <summary>
 		/// Gets all items from the source.
 		/// </summary>
