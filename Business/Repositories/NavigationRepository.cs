@@ -238,19 +238,35 @@ namespace Business.Repositories
 		/// <returns>URL.</returns>
 		private string? GetContentTreeBasedUrl(NavigationItem item) => GetPageUrl(item);
 
-		public Task<Dictionary<SiteCulture, NavigationItem>> GetWholeNavigationAsync(CancellationToken? cancellationToken = null)
-        {
-            throw new NotImplementedException();
-        }
+		public async Task<Dictionary<SiteCulture, NavigationItem>> GetWholeNavigationAsync(CancellationToken? cancellationToken = default) =>
+			   await GetContentTreeNavigationAsync(cancellationToken);
 
-        public Task<NavigationItem> GetNavigationAsync(SiteCulture? siteCulture = null, CancellationToken? cancellationToken = null)
-        {
-            throw new NotImplementedException();
-        }
+		public async Task<NavigationItem> GetNavigationAsync(SiteCulture? siteCulture = default, CancellationToken? cancellationToken = default) =>
+			await GetContentTreeNavigationAsync(siteCulture, cancellationToken);
 
-        public NavigationItem? GetNavigationItemByNodeId(int nodeId, NavigationItem startPointItem)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public NavigationItem? GetNavigationItemByNodeId(int nodeId, NavigationItem startPointItem)
+		{
+			if (startPointItem != null)
+			{
+				if (startPointItem.NodeId == nodeId)
+				{
+					return startPointItem;
+				}
+				else
+				{
+					var matches = new List<NavigationItem>();
+
+					foreach (var child in startPointItem.ChildItems)
+					{
+						var childMatch = GetNavigationItemByNodeId(nodeId, child);
+						matches.Add(childMatch!);
+					}
+
+					return matches.FirstOrDefault(match => match != null);
+				}
+			}
+
+			return null;
+		}
+	}
 }

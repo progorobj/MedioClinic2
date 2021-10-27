@@ -1,4 +1,5 @@
 ﻿#define no_suffix
+
 using Business.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;

@@ -28,7 +28,6 @@
     <Folder Include="Areas\Identity\Data\" />
     <Folder Include="Areas\Identity\Models\" />
     <Folder Include="Areas\Identity\Views\" />
-    <Folder Include="Views\Shared\Components\Navigation\" />
   </ItemGroup>
 
 </Project>

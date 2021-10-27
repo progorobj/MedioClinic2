@@ -1,4 +1,6 @@
-﻿@model MedioClinic1.Models.ViewComponents.Navigation.TopNavigationContentsModel
+﻿@using System.Threading;
+@model MedioClinic1.Models.ViewComponents.Navigation.TopNavigationContentsModel
+@inject IStringLocalizer<SharedResource> StringLocalizer
 
 @{
     var navigationItems = Model?.Navigation?.ChildItems;
