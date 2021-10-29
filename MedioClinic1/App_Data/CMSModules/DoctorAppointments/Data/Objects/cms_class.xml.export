@@ -1,0 +1,172 @@
+﻿<cms_class version="13.0">
+  <NewDataSet>
+    <cms_class>
+      <ClassID>5533</ClassID>
+      <ClassDisplayName>Doctor</ClassDisplayName>
+      <ClassName>DoctorAppointments.Doctor</ClassName>
+      <ClassUsesVersioning>false</ClassUsesVersioning>
+      <ClassIsDocumentType>false</ClassIsDocumentType>
+      <ClassIsCoupledClass>true</ClassIsCoupledClass>
+      <ClassXmlSchema>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"&gt;
+  &lt;xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;
+        &lt;xs:element name="DoctorAppointments_Doctor"&gt;
+          &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="DoctorID" msdata:ReadOnly="true" msdata:AutoIncrement="true" type="xs:int" /&gt;
+              &lt;xs:element name="DoctorCodeName"&gt;
+                &lt;xs:simpleType&gt;
+                  &lt;xs:restriction base="xs:string"&gt;
+                    &lt;xs:maxLength value="200" /&gt;
+                  &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="DoctorFirstName"&gt;
+                &lt;xs:simpleType&gt;
+                  &lt;xs:restriction base="xs:string"&gt;
+                    &lt;xs:maxLength value="200" /&gt;
+                  &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="DoctorLastName"&gt;
+                &lt;xs:simpleType&gt;
+                  &lt;xs:restriction base="xs:string"&gt;
+                    &lt;xs:maxLength value="200" /&gt;
+                  &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="DoctorSpecialty" minOccurs="0"&gt;
+                &lt;xs:simpleType&gt;
+                  &lt;xs:restriction base="xs:string"&gt;
+                    &lt;xs:maxLength value="200" /&gt;
+                  &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="DoctorEmail"&gt;
+                &lt;xs:simpleType&gt;
+                  &lt;xs:restriction base="xs:string"&gt;
+                    &lt;xs:maxLength value="200" /&gt;
+                  &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="DoctorGuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" /&gt;
+              &lt;xs:element name="DoctorLastModified" type="xs:dateTime" /&gt;
+            &lt;/xs:sequence&gt;
+          &lt;/xs:complexType&gt;
+        &lt;/xs:element&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:unique name="Constraint1" msdata:PrimaryKey="true"&gt;
+      &lt;xs:selector xpath=".//DoctorAppointments_Doctor" /&gt;
+      &lt;xs:field xpath="DoctorID" /&gt;
+    &lt;/xs:unique&gt;
+  &lt;/xs:element&gt;
+&lt;/xs:schema&gt;</ClassXmlSchema>
+      <ClassFormDefinition>&lt;form version="2"&gt;&lt;field column="DoctorID" columntype="integer" guid="268763ed-a182-44e6-a8ac-599e97f1ec3a" isPK="true" publicfield="false"&gt;&lt;properties&gt;&lt;fieldcaption&gt;DoctorID&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;controlname&gt;labelcontrol&lt;/controlname&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="DoctorCodeName" columnsize="200" columntype="text" guid="ce2b4c92-44e5-4eae-ae9c-b59859c979cb" publicfield="false" system="true" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Doctor number&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;AutoCompleteEnableCaching&gt;False&lt;/AutoCompleteEnableCaching&gt;&lt;AutoCompleteFirstRowSelected&gt;False&lt;/AutoCompleteFirstRowSelected&gt;&lt;AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;False&lt;/AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;&lt;controlname&gt;TextBoxControl&lt;/controlname&gt;&lt;FilterMode&gt;False&lt;/FilterMode&gt;&lt;Trim&gt;False&lt;/Trim&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="DoctorFirstName" columnsize="200" columntype="text" guid="cbd430bb-6ce6-424c-872d-023e324612ea" publicfield="false" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;First name&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;AutoCompleteEnableCaching&gt;False&lt;/AutoCompleteEnableCaching&gt;&lt;AutoCompleteFirstRowSelected&gt;False&lt;/AutoCompleteFirstRowSelected&gt;&lt;AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;False&lt;/AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;&lt;controlname&gt;TextBoxControl&lt;/controlname&gt;&lt;FilterMode&gt;False&lt;/FilterMode&gt;&lt;Trim&gt;False&lt;/Trim&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="DoctorLastName" columnsize="200" columntype="text" guid="4eef667b-52e2-45e4-8e31-bea7a061fc26" publicfield="false" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Last name&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;AutoCompleteEnableCaching&gt;False&lt;/AutoCompleteEnableCaching&gt;&lt;AutoCompleteFirstRowSelected&gt;False&lt;/AutoCompleteFirstRowSelected&gt;&lt;AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;False&lt;/AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;&lt;controlname&gt;TextBoxControl&lt;/controlname&gt;&lt;FilterMode&gt;False&lt;/FilterMode&gt;&lt;Trim&gt;False&lt;/Trim&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field allowempty="true" column="DoctorSpecialty" columnsize="200" columntype="text" guid="89158408-6635-4b98-87b7-f8fd4c78c9d5" publicfield="false" visible="true"&gt;&lt;settings&gt;&lt;controlname&gt;DropDownListControl&lt;/controlname&gt;&lt;DisplayActualValueAsItem&gt;False&lt;/DisplayActualValueAsItem&gt;&lt;EditText&gt;False&lt;/EditText&gt;&lt;Query&gt;SELECT SpecialtyName, SpecialtyName FROM DoctorAppointments_DoctorSpecialtyList&lt;/Query&gt;&lt;SortItems&gt;False&lt;/SortItems&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="DoctorEmail" columnsize="200" columntype="text" guid="4f2c45f5-03f2-4169-b162-0b79a3341310" publicfield="false" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Email&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;AllowMultipleAddresses&gt;False&lt;/AllowMultipleAddresses&gt;&lt;controlname&gt;emailinput&lt;/controlname&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="DoctorGuid" columntype="guid" guid="91f5da61-3377-4014-a440-70834a91aa0b" publicfield="false" system="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;GUID&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;controlname&gt;labelcontrol&lt;/controlname&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="DoctorLastModified" columnprecision="7" columntype="datetime" guid="dde3510a-65a7-4cb0-ae7e-f2642faea4ec" publicfield="false" system="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Last modified&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;controlname&gt;labelcontrol&lt;/controlname&gt;&lt;/settings&gt;&lt;/field&gt;&lt;/form&gt;</ClassFormDefinition>
+      <ClassNodeNameSource></ClassNodeNameSource>
+      <ClassTableName>DoctorAppointments_Doctor</ClassTableName>
+      <ClassShowAsSystemTable>true</ClassShowAsSystemTable>
+      <ClassUsePublishFromTo>false</ClassUsePublishFromTo>
+      <ClassShowTemplateSelection>false</ClassShowTemplateSelection>
+      <ClassIsMenuItemType>false</ClassIsMenuItemType>
+      <ClassLastModified>2021-03-01T10:15:04.1017511+01:00</ClassLastModified>
+      <ClassGUID>1aaf9cd7-d68c-44ad-a650-1c241b4389b6</ClassGUID>
+      <ClassIsProduct>false</ClassIsProduct>
+      <ClassIsCustomTable>false</ClassIsCustomTable>
+      <ClassSearchSettings>&lt;search /&gt;</ClassSearchSettings>
+      <ClassConnectionString>CMSConnectionString</ClassConnectionString>
+      <ClassVersionGUID>9641c85b-d6bb-46d1-bb0e-94745a9c6ff5</ClassVersionGUID>
+      <ClassIsForm>false</ClassIsForm>
+      <ClassResourceID>451</ClassResourceID>
+      <ClassCodeGenerationSettings>&lt;Data&gt;&lt;CodeNameColumn&gt;DoctorCodeName&lt;/CodeNameColumn&gt;&lt;DisplayNameColumn&gt;DoctorLastName&lt;/DisplayNameColumn&gt;&lt;GUIDColumn&gt;DoctorGuid&lt;/GUIDColumn&gt;&lt;LastModifiedColumn&gt;DoctorLastModified&lt;/LastModifiedColumn&gt;&lt;NameSpace&gt;DoctorAppointments&lt;/NameSpace&gt;&lt;ObjectType&gt;doctorappointments.doctor&lt;/ObjectType&gt;&lt;UseGuidHashtable&gt;False&lt;/UseGuidHashtable&gt;&lt;UseIdHashtable&gt;False&lt;/UseIdHashtable&gt;&lt;UseNameHashtable&gt;False&lt;/UseNameHashtable&gt;&lt;/Data&gt;</ClassCodeGenerationSettings>
+      <ClassUsesPageBuilder>false</ClassUsesPageBuilder>
+      <ClassIsNavigationItem>false</ClassIsNavigationItem>
+      <ClassHasURL>false</ClassHasURL>
+      <ClassHasMetadata>false</ClassHasMetadata>
+    </cms_class>
+    <cms_class>
+      <ClassID>5534</ClassID>
+      <ClassDisplayName>Appointment</ClassDisplayName>
+      <ClassName>DoctorAppointments.Appointment</ClassName>
+      <ClassUsesVersioning>false</ClassUsesVersioning>
+      <ClassIsDocumentType>false</ClassIsDocumentType>
+      <ClassIsCoupledClass>true</ClassIsCoupledClass>
+      <ClassXmlSchema>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"&gt;
+  &lt;xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;
+        &lt;xs:element name="DoctorAppointments_Appointment"&gt;
+          &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="AppointmentID" msdata:ReadOnly="true" msdata:AutoIncrement="true" type="xs:int" /&gt;
+              &lt;xs:element name="AppointmentGuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" /&gt;
+              &lt;xs:element name="AppointmentLastModified" type="xs:dateTime" /&gt;
+              &lt;xs:element name="AppointmentPatientFirstName"&gt;
+                &lt;xs:simpleType&gt;
+                  &lt;xs:restriction base="xs:string"&gt;
+                    &lt;xs:maxLength value="200" /&gt;
+                  &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="AppointmentPatientLastName"&gt;
+                &lt;xs:simpleType&gt;
+                  &lt;xs:restriction base="xs:string"&gt;
+                    &lt;xs:maxLength value="200" /&gt;
+                  &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="AppointmentPatientPhoneNumber" minOccurs="0"&gt;
+                &lt;xs:simpleType&gt;
+                  &lt;xs:restriction base="xs:string"&gt;
+                    &lt;xs:maxLength value="200" /&gt;
+                  &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="AppointmentPatientEmail"&gt;
+                &lt;xs:simpleType&gt;
+                  &lt;xs:restriction base="xs:string"&gt;
+                    &lt;xs:maxLength value="200" /&gt;
+                  &lt;/xs:restriction&gt;
+                &lt;/xs:simpleType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="AppointmentPatientBirthDate" type="xs:dateTime" /&gt;
+              &lt;xs:element name="AppointmentDoctorID" type="xs:int" /&gt;
+              &lt;xs:element name="AppointmentDate" type="xs:dateTime" /&gt;
+            &lt;/xs:sequence&gt;
+          &lt;/xs:complexType&gt;
+        &lt;/xs:element&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:unique name="Constraint1" msdata:PrimaryKey="true"&gt;
+      &lt;xs:selector xpath=".//DoctorAppointments_Appointment" /&gt;
+      &lt;xs:field xpath="AppointmentID" /&gt;
+    &lt;/xs:unique&gt;
+  &lt;/xs:element&gt;
+&lt;/xs:schema&gt;</ClassXmlSchema>
+      <ClassFormDefinition>&lt;form version="2"&gt;&lt;field column="AppointmentID" columntype="integer" guid="e321b251-21a9-4265-882f-e672e01305e7" isPK="true" publicfield="false"&gt;&lt;properties&gt;&lt;fieldcaption&gt;AppointmentID&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;controlname&gt;labelcontrol&lt;/controlname&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="AppointmentGuid" columntype="guid" guid="d83cfe23-a87b-47d2-812c-73562890466b" publicfield="false" system="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;GUID&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;controlname&gt;labelcontrol&lt;/controlname&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="AppointmentLastModified" columnprecision="7" columntype="datetime" guid="063e0bd1-8acd-4506-b753-981739cd2b43" publicfield="false" system="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Last modified&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;controlname&gt;labelcontrol&lt;/controlname&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="AppointmentPatientFirstName" columnsize="200" columntype="text" guid="e3c260ce-60de-4fc3-94a1-e0f89a8fee0b" publicfield="false" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Patient first name&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;AutoCompleteEnableCaching&gt;False&lt;/AutoCompleteEnableCaching&gt;&lt;AutoCompleteFirstRowSelected&gt;False&lt;/AutoCompleteFirstRowSelected&gt;&lt;AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;False&lt;/AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;&lt;controlname&gt;TextBoxControl&lt;/controlname&gt;&lt;FilterMode&gt;False&lt;/FilterMode&gt;&lt;Trim&gt;False&lt;/Trim&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="AppointmentPatientLastName" columnsize="200" columntype="text" guid="6c390321-b18d-4dd2-88a6-9f48da9780a4" publicfield="false" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Patient last name&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;AutoCompleteEnableCaching&gt;False&lt;/AutoCompleteEnableCaching&gt;&lt;AutoCompleteFirstRowSelected&gt;False&lt;/AutoCompleteFirstRowSelected&gt;&lt;AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;False&lt;/AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;&lt;controlname&gt;TextBoxControl&lt;/controlname&gt;&lt;FilterMode&gt;False&lt;/FilterMode&gt;&lt;Trim&gt;False&lt;/Trim&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field allowempty="true" column="AppointmentPatientPhoneNumber" columnsize="200" columntype="text" guid="8883db98-124c-41de-8046-6513073f8dd2" publicfield="false" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Patient phone&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;AutoCompleteEnableCaching&gt;False&lt;/AutoCompleteEnableCaching&gt;&lt;AutoCompleteFirstRowSelected&gt;False&lt;/AutoCompleteFirstRowSelected&gt;&lt;AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;False&lt;/AutoCompleteShowOnlyCurrentWordInCompletionListItem&gt;&lt;controlname&gt;TextBoxControl&lt;/controlname&gt;&lt;FilterMode&gt;False&lt;/FilterMode&gt;&lt;Trim&gt;False&lt;/Trim&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="AppointmentPatientEmail" columnsize="200" columntype="text" guid="d55a2f5a-6e92-4c4c-89c1-f2bf2eef40dc" publicfield="false" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Patient email&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;AllowMultipleAddresses&gt;False&lt;/AllowMultipleAddresses&gt;&lt;controlname&gt;emailinput&lt;/controlname&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="AppointmentPatientBirthDate" columnprecision="7" columntype="datetime" guid="981086fe-5b67-42a9-870c-eb532d8c5e0c" publicfield="false" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Birth date&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;CheckRange&gt;True&lt;/CheckRange&gt;&lt;controlname&gt;CalendarControl&lt;/controlname&gt;&lt;DisplayNow&gt;True&lt;/DisplayNow&gt;&lt;EditTime&gt;True&lt;/EditTime&gt;&lt;TimeZoneType&gt;inherit&lt;/TimeZoneType&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="AppointmentDoctorID" columntype="integer" guid="755293ff-8b19-442b-ba78-b5cf85c96702" publicfield="false" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Doctor&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;AddGlobalObjectNamePrefix&gt;False&lt;/AddGlobalObjectNamePrefix&gt;&lt;AddGlobalObjectSuffix&gt;False&lt;/AddGlobalObjectSuffix&gt;&lt;AllowAll&gt;False&lt;/AllowAll&gt;&lt;AllowDefault&gt;False&lt;/AllowDefault&gt;&lt;AllowEditTextBox&gt;False&lt;/AllowEditTextBox&gt;&lt;AllowEmpty&gt;False&lt;/AllowEmpty&gt;&lt;controlname&gt;Uni_selector&lt;/controlname&gt;&lt;DialogWindowName&gt;SelectionDialog&lt;/DialogWindowName&gt;&lt;DisplayNameFormat&gt;{%DoctorFirstName%} {%DoctorLastName%}&lt;/DisplayNameFormat&gt;&lt;EditDialogWindowHeight&gt;700&lt;/EditDialogWindowHeight&gt;&lt;EditDialogWindowWidth&gt;1000&lt;/EditDialogWindowWidth&gt;&lt;EditWindowName&gt;EditWindow&lt;/EditWindowName&gt;&lt;EncodeOutput&gt;True&lt;/EncodeOutput&gt;&lt;GlobalObjectSuffix ismacro="true"&gt;{$general.global$}&lt;/GlobalObjectSuffix&gt;&lt;ItemsPerPage&gt;25&lt;/ItemsPerPage&gt;&lt;LocalizeItems&gt;True&lt;/LocalizeItems&gt;&lt;MaxDisplayedItems&gt;25&lt;/MaxDisplayedItems&gt;&lt;MaxDisplayedTotalItems&gt;50&lt;/MaxDisplayedTotalItems&gt;&lt;ObjectType&gt;DoctorAppointments.Doctor&lt;/ObjectType&gt;&lt;RemoveMultipleCommas&gt;False&lt;/RemoveMultipleCommas&gt;&lt;ReturnColumnName&gt;DoctorID&lt;/ReturnColumnName&gt;&lt;ReturnColumnType&gt;id&lt;/ReturnColumnType&gt;&lt;SelectionMode&gt;1&lt;/SelectionMode&gt;&lt;UseDefaultNameFilter&gt;True&lt;/UseDefaultNameFilter&gt;&lt;ValuesSeparator&gt;;&lt;/ValuesSeparator&gt;&lt;/settings&gt;&lt;/field&gt;&lt;field column="AppointmentDate" columnprecision="7" columntype="datetime" guid="ab0b2b47-8374-4153-a71e-cd1ae78d9861" publicfield="false" system="true" visible="true"&gt;&lt;properties&gt;&lt;fieldcaption&gt;Appointment date&lt;/fieldcaption&gt;&lt;/properties&gt;&lt;settings&gt;&lt;CheckRange&gt;True&lt;/CheckRange&gt;&lt;controlname&gt;CalendarControl&lt;/controlname&gt;&lt;DisplayNow&gt;True&lt;/DisplayNow&gt;&lt;EditTime&gt;True&lt;/EditTime&gt;&lt;TimeZoneType&gt;inherit&lt;/TimeZoneType&gt;&lt;/settings&gt;&lt;/field&gt;&lt;/form&gt;</ClassFormDefinition>
+      <ClassNodeNameSource></ClassNodeNameSource>
+      <ClassTableName>DoctorAppointments_Appointment</ClassTableName>
+      <ClassShowAsSystemTable>true</ClassShowAsSystemTable>
+      <ClassUsePublishFromTo>false</ClassUsePublishFromTo>
+      <ClassShowTemplateSelection>false</ClassShowTemplateSelection>
+      <ClassIsMenuItemType>false</ClassIsMenuItemType>
+      <ClassLastModified>2021-03-01T10:14:57.0011292+01:00</ClassLastModified>
+      <ClassGUID>c93068e5-2c76-4530-9df4-538b5a1f114b</ClassGUID>
+      <ClassIsProduct>false</ClassIsProduct>
+      <ClassIsCustomTable>false</ClassIsCustomTable>
+      <ClassSearchSettings>&lt;search /&gt;</ClassSearchSettings>
+      <ClassConnectionString>CMSConnectionString</ClassConnectionString>
+      <ClassVersionGUID>bc421f24-22b5-44fd-8dd5-f91ff87a6ff1</ClassVersionGUID>
+      <ClassIsForm>false</ClassIsForm>
+      <ClassResourceID>451</ClassResourceID>
+      <ClassCodeGenerationSettings>&lt;Data&gt;&lt;CodeNameColumn&gt;AppointmentPatientFirstName&lt;/CodeNameColumn&gt;&lt;GUIDColumn&gt;AppointmentGuid&lt;/GUIDColumn&gt;&lt;LastModifiedColumn&gt;AppointmentLastModified&lt;/LastModifiedColumn&gt;&lt;NameSpace&gt;DoctorAppointments&lt;/NameSpace&gt;&lt;ObjectType&gt;doctorappointments.appointment&lt;/ObjectType&gt;&lt;UseGuidHashtable&gt;False&lt;/UseGuidHashtable&gt;&lt;UseIdHashtable&gt;False&lt;/UseIdHashtable&gt;&lt;UseNameHashtable&gt;False&lt;/UseNameHashtable&gt;&lt;/Data&gt;</ClassCodeGenerationSettings>
+      <ClassUsesPageBuilder>false</ClassUsesPageBuilder>
+      <ClassIsNavigationItem>false</ClassIsNavigationItem>
+      <ClassHasURL>false</ClassHasURL>
+      <ClassHasMetadata>false</ClassHasMetadata>
+    </cms_class>
+  </NewDataSet>
+</cms_class>

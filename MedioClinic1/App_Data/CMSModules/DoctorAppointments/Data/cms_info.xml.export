@@ -1,0 +1,32 @@
+﻿<cms_info version="13.0">
+  <NewDataSet>
+    <cms_info>
+      <Key>machinename</Key>
+      <Value>NI-14-NTB</Value>
+    </cms_info>
+    <cms_info>
+      <Key>domainname</Key>
+      <Value>localhost</Value>
+    </cms_info>
+    <cms_info>
+      <Key>currentuser</Key>
+      <Value>administrator</Value>
+    </cms_info>
+    <cms_info>
+      <Key>starttime</Key>
+      <Value>3/1/2021 11:38:15 AM</Value>
+    </cms_info>
+    <cms_info>
+      <Key>systemversion</Key>
+      <Value>13.0.0.21407</Value>
+    </cms_info>
+    <cms_info>
+      <Key>hotfixversion</Key>
+      <Value>0</Value>
+    </cms_info>
+    <cms_info>
+      <Key>webapplication</Key>
+      <Value>True</Value>
+    </cms_info>
+  </NewDataSet>
+</cms_info>
