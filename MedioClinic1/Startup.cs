@@ -2,6 +2,7 @@ using Autofac;
 using Core.Configuration;
 using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
+using Kentico.PageBuilder.Web.Mvc;
 using Kentico.Web.Mvc;
 using MedioClinic1.Configuration;
 using MedioClinic1.Extensions;
@@ -55,7 +56,7 @@ namespace MedioClinic1
             // Enable desired Kentico Xperience features
             var kenticoServiceCollection = services.AddKentico(features =>
             {
-                // features.UsePageBuilder();
+                 features.UsePageBuilder();
                 // features.UseActivityTracking();
                 // features.UseABTesting();
                 // features.UseWebAnalytics();
@@ -135,8 +136,9 @@ namespace MedioClinic1
             }
 
             app.UseLocalizedStatusCodePagesWithReExecute("/{0}/error/{1}/");
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+           
             app.UseKentico();
          
 
